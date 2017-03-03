@@ -9,7 +9,7 @@ import registrationScheduler.scheduler.Scheduler;
 public class WorkerThread implements Runnable{
 	FileProcessor prefFile;
 	FileProcessor addDropFile;
-	Results results;
+	Results result;
 	//should they share this or each get their own??
 	Scheduler scheduler;
 	//should each worker have it's own arrayList
@@ -17,11 +17,11 @@ public class WorkerThread implements Runnable{
 	//how do threads work???
 	ArrayList<Student> studentList= new ArrayList<Student>();
 	
-	public WorkerThread(FileProcessor prefFile, FileProcessor addDropFile, Results results, Scheduler scheduler){
+	public WorkerThread(FileProcessor prefFile, FileProcessor addDropFile, Results resultsIn,Scheduler schedulerIn){
 		this.prefFile = prefFile;
 		this.addDropFile = addDropFile;
-		this.results = results;
-		this.scheduler = scheduler;
+		this.result = resultsIn;
+		this.scheduler = schedulerIn
 	}
 	
 	public void readPrefFile(){
