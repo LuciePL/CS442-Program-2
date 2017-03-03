@@ -18,8 +18,14 @@ public abstract class ObjectPool<T>{
 	//this is present in object pool examples but im not sure if	
 	// I overrode it correctly in the course 
 	protected abstract T create();
+
+	//public void init(T[] objarray){
+	//	for(int i = 0; i < objarray.length; i ++){
+	//		free.add(objarray[0]);
+	//	}
+	//}
 	
-	//get least recently used course
+	//get first object in the free list
 	public synchronized T checkOut(){
 		//long time = System.currentTimeMillis();
 		T object;

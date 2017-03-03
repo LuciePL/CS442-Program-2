@@ -2,12 +2,15 @@ package registrationScheduler.scheduler;
 
 import registrationScheduler.student.Student;
 import registrationScheduler.objectPool.Course;
+import registrationScheduler.objectPool.CoursePool;
 import java.util.ArrayList;
 
 public class Scheduler{
 	private Course courseList[] = new Course[8];
+	private CoursePool pool;
 	
 	public Scheduler(){
+		String courseNames[] = new String[] {"A","B","C","D","E","F","G","H"};
 		Course a = new Course("A");
 		courseList[0] = a;
 		Course b = new Course("B");
@@ -24,9 +27,11 @@ public class Scheduler{
 		courseList[6] = g;
 		Course h = new Course("H");
 		courseList[7] = h;
+		pool = new CoursePool(courseNames);
+		//pool.init(courseList);
 	}
 	
-public ArrayList<Student> createSchedules(ArrayList<Student> studentList){
+	public ArrayList<Student> createSchedules(ArrayList<Student> studentList){
 		int maxStudents = 20;
 		for(int i=0; i<studentList.size();i++){
 			Student currentStudent = studentList.get(i);
