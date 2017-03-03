@@ -13,8 +13,8 @@ import registrationScheduler.util.FileProcessor;
 import registrationScheduler.util.Logger;
 import registrationScheduler.threadMgmt.WorkerThread;
 import registrationScheduler.threadMgmt.CreateWorkers;
-//import registrationScheduler.store;
-
+import registrationScheduler.store.Results;
+import registrationScheduler.scheduler.Scheduler;
 
 
 
@@ -53,9 +53,10 @@ public class Driver{
 		}
 		FileProcessor preferenceFile = new FileProcessor(args[0]);
 		FileProcessor addDropFile = new FileProcessor(args[1]);
-		//Results results = new Results();
+		Results results = new Results();
+		Scheduler scheduler = new Scheduler();
 		
-		CreateWorkers createWorkers = new CreateWorkers(preferenceFile,addDropFile);
+		CreateWorkers createWorkers = new CreateWorkers(preferenceFile,addDropFile,results,scheduler);
 		createWorkers.startWorkers(numThreads);
 	/*	WorkerThread wT = new WorkerThread(preferenceFile,addDropFile);
 		wT.run();*/
