@@ -2,7 +2,8 @@ package registrationScheduler.student;
 
 import registrationScheduler.objectPool.Course;
 import java.util.ArrayList;
-
+import java.util.Hashtable;
+//import org.apache.commons.collections4;
 
 public class Student{
 	private String[] coursePreference = new String[4];
@@ -10,6 +11,7 @@ public class Student{
 	private String name;
 	private int preferenceScore;
 	private int numberOfCourses;
+	//private Multimap<Integer, String> addDrop = new Multimap<Integer,String>();
 	
 	public Student(String name){
 		this.name = name;
@@ -54,12 +56,12 @@ public class Student{
 			}
 		}
 		numberOfCourses--;
-		
 	}
 	
 	public void setPreferenceScore(int score){
 		preferenceScore+=score;
 	}
+	
 	
 	/**@return the student's name*/
 	@Override

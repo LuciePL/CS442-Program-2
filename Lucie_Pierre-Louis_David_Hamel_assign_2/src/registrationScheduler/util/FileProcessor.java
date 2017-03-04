@@ -40,7 +40,7 @@ public class FileProcessor{
 	@param lineNum The line the user wishes to read from the file
 	@return s The line of the file returned as a string
 	*/
-	public String readNextLine(){
+	public synchronized String readNextLine(){
 			return inScanner.nextLine();
 	}
 

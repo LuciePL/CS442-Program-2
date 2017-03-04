@@ -54,9 +54,8 @@ public class Driver{
 		FileProcessor preferenceFile = new FileProcessor(args[0]);
 		FileProcessor addDropFile = new FileProcessor(args[1]);
 		Results results = new Results();
-		Scheduler scheduler = new Scheduler();
 		
-		CreateWorkers createWorkers = new CreateWorkers(preferenceFile,addDropFile,results,scheduler);
+		CreateWorkers createWorkers = new CreateWorkers(preferenceFile,addDropFile,results);
 		createWorkers.startWorkers(numThreads);
 	/*	WorkerThread wT = new WorkerThread(preferenceFile,addDropFile);
 		wT.run();*/

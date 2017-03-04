@@ -5,26 +5,24 @@ import registrationScheduler.store.Results;
 import registrationScheduler.student.Student;
 import java.util.ArrayList;
 import registrationScheduler.scheduler.Scheduler;
+import registrationScheduler.objectPool.Course;
 
 public class WorkerThread implements Runnable{
 	FileProcessor prefFile;
 	FileProcessor addDropFile;
 	Results result;
-	//should they share this or each get their own??
 	Scheduler scheduler;
-	//should each worker have it's own arrayList
-	//should they share this??
-	//how do threads work???
-	ArrayList<Student> studentList= new ArrayList<Student>();
+	ArrayList<Student> studentList;
 	
-	public WorkerThread(FileProcessor prefFile, FileProcessor addDropFile, Results resultsIn,Scheduler schedulerIn){
+	public WorkerThread(FileProcessor prefFile, FileProcessor addDropFile, Results resultsIn){
 		this.prefFile = prefFile;
 		this.addDropFile = addDropFile;
 		this.result = resultsIn;
-		this.scheduler = schedulerIn
+		this.scheduler = new Scheduler();
+		this.studentList = new ArrayList<Student>();
 	}
 	
-	public void readPrefFile(){
+	public synchronized void readPrefFile(){
 		prefFile.createScanner();
 		while(prefFile.getScanner().hasNextLine()){
 			String line = prefFile.readNextLine();
@@ -36,9 +34,51 @@ public class WorkerThread implements Runnable{
 		}
 	}
 	
+	public synchronized void readAddDropFile(){
+		addDropFile.createScanner();
+		while(addDropFile.getScanner().hasNextLine()){
+			String line = addDropFile.readNextLine();
+			String[] addDropProfile = line.split(" ");
+			Student currStudent;
+			ArrayList<String> addDropCourses = new ArrayList<String>();
+			for(int i = 0; i< studentList.size();i++){
+				if(studentList.get(i).getName().equals(addDropProfile[0])){
+					for(int j=2; j<addDropProfile.length;j++){
+						addDropCourses.add(addDropProfile[j]);
+					}
+					try{
+						if(Integer.parseInt(addDropProfile[1]) ==0){
+							studentList.set(i,scheduler.dropCourses(studentList.get(i),addDropCourses));
+						}
+						else{
+							//add courses
+						}
+					}catch(NumberFormatException e){
+						System.exit(1);
+					}
+					finally{
+						
+					}
+					}
+					
+				}
+			}
+		}
+
+	
+	
 	public void run(){
 		readPrefFile();
-		studentList = scheduler.createSchedules(studentList);
+		studentList = scheduler.createPrefSchedules(studentList);
+		/*for(int i = 0; i< studentList.size();i++){
+			ArrayList<Course> studentCourses = studentList.get(i).getScheduledCourses();
+			System.out.println(studentList.get(i).getName());
+			for(int j=0; j < studentCourses.size();j++){
+				System.out.println(studentCourses.get(j));
+			}
+		}*/
+		readAddDropFile();
+		//studentList = scheduler.addDropSchedules(studentList);
 		
 	}
 }

@@ -7,12 +7,12 @@ import java.util.ArrayList;
 public class Course{
 	private String courseName;
 	private int studentCount;
-	private int maxStudents;
+	//private int maxStudents;
 	
 	public Course(String courseName){
 		this.courseName = courseName;
 		this.studentCount = 0;
-		this.maxStudents = 60;
+		//this.maxStudents = 60;
 	}
 	
 	/**@return the course name*/

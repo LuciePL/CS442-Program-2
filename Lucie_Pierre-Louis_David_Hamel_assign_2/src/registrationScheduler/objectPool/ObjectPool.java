@@ -4,8 +4,8 @@ import java.util.Hashtable;
 import java.util.ArrayList;
 
 public abstract class ObjectPool<T>{
-	private ArrayList<T> inUse;
-	private ArrayList<T> free;
+	protected ArrayList<T> inUse;
+	protected ArrayList<T> free;
 	//abstract Object create();
 	//abstract boolean validate(Course c);
 	//abstract void expire(Course c);
