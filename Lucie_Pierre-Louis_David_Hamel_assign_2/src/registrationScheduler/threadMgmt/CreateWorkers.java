@@ -17,6 +17,7 @@ public class CreateWorkers{
 		this.result = resultIn;
 	}
 	
+	/** @return None */
 	public void startWorkers(int numThreads){
 		for(int i = 0; i< numThreads; i++){
 			WorkerThread temp = new WorkerThread(prefFile,addDropFile,outFile,result);

@@ -27,7 +27,8 @@ public class WorkerThread implements Runnable{
 	//public synchronized void studentsToResults(){
 	//	results
 	//}	
-		
+	
+	/** @return None */	
 	public synchronized void readPrefFile(){
 		prefFile.createScanner();
 		while(prefFile.getScanner().hasNextLine()){
@@ -40,6 +41,7 @@ public class WorkerThread implements Runnable{
 		}
 	}
 	
+	/** @return None */
 	public synchronized void readAddDropFile(){
 		addDropFile.createScanner();
 		while(addDropFile.getScanner().hasNextLine()){
@@ -72,7 +74,7 @@ public class WorkerThread implements Runnable{
 		}
 
 	
-	
+	/** @return None */
 	public void run(){
 		readPrefFile();
 		studentList = scheduler.createPrefSchedules(studentList);

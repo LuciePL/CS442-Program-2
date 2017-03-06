@@ -30,6 +30,7 @@ public class Course{
 		this.studentCount++;
 	}
 	
+	/**@return none*/
 	public void subtractCount(){
 		this.studentCount--;
 	}

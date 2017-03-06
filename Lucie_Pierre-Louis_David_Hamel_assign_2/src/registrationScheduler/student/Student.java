@@ -6,12 +6,11 @@ import java.util.Hashtable;
 //import org.apache.commons.collections4;
 
 public class Student{
-	private String[] coursePreference = new String[5];//this array should be 5 long i think
+	private String[] coursePreference = new String[5];
 	private ArrayList<Course> scheduledCourses= new ArrayList<Course>();
 	private String name;
 	private int preferenceScore;
 	private int numberOfCourses;
-	//private Multimap<Integer, String> addDrop = new Multimap<Integer,String>();
 	
 	public Student(String name){
 		this.name = name;

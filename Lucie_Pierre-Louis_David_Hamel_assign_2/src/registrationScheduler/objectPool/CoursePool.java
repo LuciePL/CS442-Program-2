@@ -19,8 +19,11 @@ public class CoursePool extends ObjectPool{
 	
 	
 	
-	//I couldn't figure out how to use this so I just had the courses made in the constructor but feel free to fix it
+	//I couldn't figure out how to use this so I just had the courses made 
+	//in the constructor but feel free to fix it
 	@Override
+	/** @return A new instance of course, created if the object
+	pool API needs it */
 	protected Course create(){
 		//try{
 			Course c = new Course(courseNames[courseCount]);

@@ -20,6 +20,7 @@ public class FileProcessor{
 		inFile = new File(fn);
 	}
 	
+	/** @return None */
 	public void createScanner(){
 		try{
 			inScanner = new Scanner(inFile);
@@ -44,6 +45,7 @@ public class FileProcessor{
 			return inScanner.nextLine();
 	}
 
+	/** @return None */
 	public void clearFile(){
 		try{
 			File outFile = new File(fileName);
@@ -79,10 +81,12 @@ public class FileProcessor{
 		}
 	}
 
+	/** @return Name of the file */
 	public String toString(){
 		return this.fileName;
 	}
 
+	/** @return None */
 	public void setFileName(String newFileName){
 		this.fileName = newFileName;
 	}

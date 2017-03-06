@@ -6,24 +6,25 @@ import java.util.ArrayList;
 
 public class Results implements FileDisplayInterface {
 	// appropriate data structure as private data member
-	
 	private ArrayList<Student> studentList;
 	private float avgScore;
-	// appropriate method to save prime number to the data structure
+	// appropriate method to save prime number to the data structure?
 
 	public Results(){
 		this.studentList = new ArrayList<Student>();
 	}
 
+	/** @return None */
 	public void setStudentList(ArrayList<Student>studentsIn){
 		this.studentList = studentsIn;
 	}
 
+	/** @return None */
 	public void setAvgScore(float scoreIn){
 		this.avgScore = scoreIn;
 	}
 
-    
+    	/** @return None */
 	public void writeSchedulesToFile(FileProcessor fpIn) {
 	fpIn.clearFile();
 	//fpIn.write("Test");

@@ -35,7 +35,8 @@ public class Scheduler{
 		}
 		//pool.init(courseList);
 	
-	
+	/**@return A list of all the students after they have been 
+	assigned courses based on their preferences*/
 	public ArrayList<Student> createPrefSchedules(ArrayList<Student> studentList){
 		int maxStudents = 60;
 		for(int i=0; i<studentList.size();i++){
@@ -55,6 +56,8 @@ public class Scheduler{
 		return studentList;
 	}
 	
+	/**@return A student after they have had a specified 
+	course(s) removed from their enrolled courses*/
 	public Student dropCourses(Student student, ArrayList<String> courses){
 		for(int i =0; i<courses.size();i++){
 			for(int j = 0; j < courseList.length; j++){
@@ -68,6 +71,8 @@ public class Scheduler{
 		
 	}
 	
+	/**@return A student after they have had a(n) specified course(s)
+	added to their enrolled courses*/
 	public Student addCourses(Student student, ArrayList<String> courses){
 		for(int i =0; i<courses.size();i++){
 			if(student.getNumberOfCourses() <5){
@@ -82,6 +87,8 @@ public class Scheduler{
 		return student;
 	}
 
+	/**@return A list of students after the preference scores for
+	each student in the list has been calculated*/
 	public ArrayList<Student> calculatePreferenceScores(ArrayList<Student>studentList){
 		for(int i = 0; i < studentList.size(); i++){
 			int correctClasses = 0;
@@ -93,7 +100,7 @@ public class Scheduler{
 						//System.out.println(6-j + "\n");
 						studentList.get(i).setPreferenceScore(6-j);
 						correctClasses++;
-					}//have to add scoreing for classes students got but didnt want 
+					}
 					
 				}
 				unwantedClasses = studentList.get(i).getScheduledCourses().size() - correctClasses;
@@ -103,6 +110,7 @@ public class Scheduler{
 		return studentList;
 	}
 
+	/** @return The average preference score of all students*/
 	public float calculateAveragePreferanceScore(ArrayList<Student>studentList){
 		int totalPref = 0;
 		for(int i = 0; i < studentList.size(); i++){
