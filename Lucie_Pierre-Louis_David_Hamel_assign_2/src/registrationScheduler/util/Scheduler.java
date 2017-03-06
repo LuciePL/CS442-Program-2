@@ -81,6 +81,20 @@ public class Scheduler{
 		}
 		return student;
 	}
+
+	public ArrayList<Student> calculatePreferenceScores(ArrayList<Student>studentList){
+		for(int i = 0; i < studentList.size(); i++){
+			String[] courseWants = studentList.get(i).getCoursePreference();
+			for(int j = 0; j < courseWants.length; j++){
+				for(int k = 0;k < studentList.get(i).getScheduledCourses().size() ; k++){
+					if(courseWants[j].equals(studentList.get(i).getScheduledCourses().get(k).getName())){
+						studentList.get(i).setPreferenceScore(6-j);
+					}//have to add scoreing for classes students got but didnt want 
+				}
+			}
+		}
+		return studentList;
+	}
 	
 	
 	
