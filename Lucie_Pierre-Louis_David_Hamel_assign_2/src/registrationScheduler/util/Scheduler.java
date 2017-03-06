@@ -55,10 +55,31 @@ public class Scheduler{
 		return studentList;
 	}
 	
-	public Student dropCourses(Student student, ArrayList<String> addDropCourses){
-		int maxStudents;
+	public Student dropCourses(Student student, ArrayList<String> courses){
+		for(int i =0; i<courses.size();i++){
+			for(int j = 0; j < courseList.length; j++){
+				if(courseList[j].getName().equals(courses.get(i))){
+					student.dropScheduledCourse(courseList[j]);
+					courseList[j].subtractCount();
+				}
+			}
+		}
 		return student;
 		
+	}
+	
+	public Student addCourses(Student student, ArrayList<String> courses){
+		for(int i =0; i<courses.size();i++){
+			if(student.getNumberOfCourses() <5){
+				for(int j = 0; j < courseList.length; j++){
+					if(courseList[j].getName().equals(courses.get(i))){
+						student.addScheduledCourse(courseList[j]);
+						courseList[j].addToCount();
+					}
+				}
+			}
+		}
+		return student;
 	}
 	
 	

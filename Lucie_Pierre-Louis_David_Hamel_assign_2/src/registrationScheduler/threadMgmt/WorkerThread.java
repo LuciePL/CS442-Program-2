@@ -51,7 +51,7 @@ public class WorkerThread implements Runnable{
 							studentList.set(i,scheduler.dropCourses(studentList.get(i),addDropCourses));
 						}
 						else{
-							//add courses
+							studentList.set(i,scheduler.addCourses(studentList.get(i),addDropCourses));
 						}
 					}catch(NumberFormatException e){
 						System.exit(1);
