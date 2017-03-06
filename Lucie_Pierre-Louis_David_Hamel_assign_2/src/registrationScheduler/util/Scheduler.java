@@ -84,16 +84,31 @@ public class Scheduler{
 
 	public ArrayList<Student> calculatePreferenceScores(ArrayList<Student>studentList){
 		for(int i = 0; i < studentList.size(); i++){
+			int correctClasses = 0;
+			int unwantedClasses = 0;
 			String[] courseWants = studentList.get(i).getCoursePreference();
 			for(int j = 0; j < courseWants.length; j++){
 				for(int k = 0;k < studentList.get(i).getScheduledCourses().size() ; k++){
 					if(courseWants[j].equals(studentList.get(i).getScheduledCourses().get(k).getName())){
 						studentList.get(i).setPreferenceScore(6-j);
+						correctClasses++;
 					}//have to add scoreing for classes students got but didnt want 
+					
 				}
+				unwantedClasses = studentList.get(i).getScheduledCourses().size() - correctClasses;
+				studentList.get(i).setPreferenceScore(unwantedClasses);
 			}
 		}
 		return studentList;
+	}
+
+	public float calculateAveragePreferanceScore(ArrayList<Student>studentList){
+		int totalPref = 0;
+		for(int i = 0; i < studentList.size(); i++){
+			totalPref = totalPref + studentList.get(i).getPreferenceScore();
+		}
+
+		return totalPref/80;
 	}
 	
 	

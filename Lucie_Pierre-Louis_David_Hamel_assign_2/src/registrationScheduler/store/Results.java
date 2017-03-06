@@ -8,6 +8,7 @@ public class Results implements FileDisplayInterface {
 	// appropriate data structure as private data member
 	
 	private ArrayList<Student> studentList;
+	private float avgScore;
 	// appropriate method to save prime number to the data structure
 
 	public Results(){
@@ -16,6 +17,10 @@ public class Results implements FileDisplayInterface {
 
 	public void setStudentList(ArrayList<Student>studentsIn){
 		this.studentList = studentsIn;
+	}
+
+	public void setAvgScore(float scoreIn){
+		this.avgScore = scoreIn;
 	}
 
     
@@ -29,7 +34,11 @@ public class Results implements FileDisplayInterface {
 		}
 		outString = outString+studentList.get(i).getPreferenceScore() + "\n";
 		fpIn.write(outString);
+		
+		
 	}
+	fpIn.write("\n");
+	fpIn.write("Average Preference Score is: " + avgScore);
     }
 } 
 

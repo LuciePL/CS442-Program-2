@@ -87,6 +87,7 @@ public class WorkerThread implements Runnable{
 		studentList = scheduler.calculatePreferenceScores(studentList);
 		//studentList = scheduler.addDropSchedules(studentList);
 		result.setStudentList(studentList);
+		result.setAvgScore(scheduler.calculateAveragePreferanceScore(studentList));
 		result.writeSchedulesToFile(outFile);
 	}
 }
