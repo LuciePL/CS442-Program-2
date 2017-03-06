@@ -53,10 +53,12 @@ public class Driver{
 		}
 		FileProcessor preferenceFile = new FileProcessor(args[0]);
 		FileProcessor addDropFile = new FileProcessor(args[1]);
+		FileProcessor outFile = new FileProcessor(args[2]);
 		Results results = new Results();
 		
-		CreateWorkers createWorkers = new CreateWorkers(preferenceFile,addDropFile,results);
+		CreateWorkers createWorkers = new CreateWorkers(preferenceFile,addDropFile,outFile, results);
 		createWorkers.startWorkers(numThreads);
+		//results.writeSchedulesToFile(outFile);
 	/*	WorkerThread wT = new WorkerThread(preferenceFile,addDropFile);
 		wT.run();*/
 		

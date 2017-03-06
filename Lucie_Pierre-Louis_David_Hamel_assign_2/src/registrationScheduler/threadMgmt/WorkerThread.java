@@ -10,18 +10,24 @@ import registrationScheduler.objectPool.Course;
 public class WorkerThread implements Runnable{
 	FileProcessor prefFile;
 	FileProcessor addDropFile;
+	FileProcessor outFile;
 	Results result;
 	Scheduler scheduler;
 	ArrayList<Student> studentList;
 	
-	public WorkerThread(FileProcessor prefFile, FileProcessor addDropFile, Results resultsIn){
+	public WorkerThread(FileProcessor prefFile, FileProcessor addDropFile, FileProcessor outFile, Results resultsIn){
 		this.prefFile = prefFile;
 		this.addDropFile = addDropFile;
+		this.outFile = outFile;
 		this.result = resultsIn;
 		this.scheduler = new Scheduler();
 		this.studentList = new ArrayList<Student>();
 	}
-	
+
+	//public synchronized void studentsToResults(){
+	//	results
+	//}	
+		
 	public synchronized void readPrefFile(){
 		prefFile.createScanner();
 		while(prefFile.getScanner().hasNextLine()){
@@ -79,6 +85,7 @@ public class WorkerThread implements Runnable{
 		}*/
 		readAddDropFile();
 		//studentList = scheduler.addDropSchedules(studentList);
-		
+		result.setStudentList(studentList);
+		result.writeSchedulesToFile(outFile);
 	}
 }

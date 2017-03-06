@@ -24,6 +24,11 @@ public class Student{
 		return this.name;
 	}
 	
+	/**@return Preference score of the student*/
+	public int getPreferenceScore(){
+		return this.preferenceScore;
+	}
+	
 	/**@return The number of courses the student is taking*/
 	public int getNumberOfCourses(){
 		return this.numberOfCourses;
