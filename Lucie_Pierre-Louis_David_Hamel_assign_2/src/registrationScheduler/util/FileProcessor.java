@@ -9,15 +9,19 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.io.FileNotFoundException;
+import registrationScheduler.util.Logger;
 
 public class FileProcessor{
 	private String fileName;
 	private File inFile;
 	private Scanner inScanner;
+	private Logger logger;
 	
-	public FileProcessor(String fn){
+	public FileProcessor(String fn, Logger loggerIn){
 		fileName = fn;
 		inFile = new File(fn);
+		this.logger = loggerIn;
+		loggerIn.writeMessage("File Processor constructor called",4);
 	}
 	
 	/** @return None */

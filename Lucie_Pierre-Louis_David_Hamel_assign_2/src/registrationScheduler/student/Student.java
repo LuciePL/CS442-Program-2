@@ -3,7 +3,7 @@ package registrationScheduler.student;
 import registrationScheduler.objectPool.Course;
 import java.util.ArrayList;
 import java.util.Hashtable;
-//import org.apache.commons.collections4;
+import registrationScheduler.util.Logger;
 
 public class Student{
 	private String[] coursePreference = new String[5];
@@ -11,11 +11,14 @@ public class Student{
 	private String name;
 	private int preferenceScore;
 	private int numberOfCourses;
+	private Logger logger;
 	
-	public Student(String name){
+	public Student(String name, Logger loggerIn){
 		this.name = name;
 		this.preferenceScore = 0;
 		this.numberOfCourses = 0;
+		this.logger = loggerIn;
+		logger.writeMessage("Student constructor called",4);
 	}
 	
 	/** @return Name of the student*/

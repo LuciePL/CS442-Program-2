@@ -2,16 +2,19 @@ package registrationScheduler.objectPool;
 
 import registrationScheduler.student.Student;
 import java.util.ArrayList;
-
+import registrationScheduler.util.Logger;
 
 public class Course{
 	private String courseName;
 	private int studentCount;
+	private Logger logger;
 	//private int maxStudents;
 	
-	public Course(String courseName){
+	public Course(String courseName, Logger loggerIn){
 		this.courseName = courseName;
 		this.studentCount = 0;
+		this.logger = loggerIn;
+		loggerIn.writeMessage("Course constructor called",4);
 		//this.maxStudents = 60;
 	}
 	

@@ -4,36 +4,24 @@ import registrationScheduler.student.Student;
 import registrationScheduler.objectPool.Course;
 import registrationScheduler.objectPool.CoursePool;
 import java.util.ArrayList;
+import registrationScheduler.util.Logger;
 
 public class Scheduler{
 	private Course courseList[] = new Course[8];
 	private CoursePool pool;
+	Logger logger;
 	
-	public Scheduler(){
+	public Scheduler(Logger loggerIn){
+		this.logger = logger;
+		logger.writeMessage("Scheduler constructor called",4);
 		String courseNames[] = new String[] {"A","B","C","D","E","F","G","H"};
 		for(int i=0; i< courseNames.length;i++){
-			Course temp = new Course(courseNames[i]);
+			Course temp = new Course(courseNames[i],logger);
 			courseList[i] = temp;
 		}
-		/*Course a = new Course("A");
-		courseList[0] = a;
-		Course b = new Course("B");
-		courseList[1] = b;
-		Course c = new Course("C");
-		courseList[2] = c;
-		Course d = new Course("D");
-		courseList[3] = d;
-		Course e = new Course("E");
-		courseList[4] = e;
-		Course f = new Course("F");
-		courseList[5] = f;
-		Course g = new Course("G");
-		courseList[6] = g;
-		Course h = new Course("H");
-		courseList[7] = h;*/
+		
 		//pool = new CoursePool(courseNames);
 		}
-		//pool.init(courseList);
 	
 	/**@return A list of all the students after they have been 
 	assigned courses based on their preferences*/

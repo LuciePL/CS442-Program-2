@@ -6,6 +6,7 @@ import registrationScheduler.student.Student;
 import java.util.ArrayList;
 import registrationScheduler.scheduler.Scheduler;
 import registrationScheduler.objectPool.Course;
+import registrationScheduler.util.Logger;
 
 public class WorkerThread implements Runnable{
 	FileProcessor prefFile;
@@ -14,14 +15,18 @@ public class WorkerThread implements Runnable{
 	Results result;
 	Scheduler scheduler;
 	ArrayList<Student> studentList;
+	Logger logger;
 	
-	public WorkerThread(FileProcessor prefFile, FileProcessor addDropFile, FileProcessor outFile, Results resultsIn){
+	public WorkerThread(FileProcessor prefFile, FileProcessor addDropFile, FileProcessor outFile, Results resultsIn, Logger loggerIn){
 		this.prefFile = prefFile;
 		this.addDropFile = addDropFile;
 		this.outFile = outFile;
 		this.result = resultsIn;
-		this.scheduler = new Scheduler();
+		this.logger = loggerIn;
+		loggerIn.writeMessage("Worker Thread constructor called",4);
+		this.scheduler = new Scheduler(logger);
 		this.studentList = new ArrayList<Student>();
+		
 	}
 
 	//public synchronized void studentsToResults(){
@@ -29,12 +34,12 @@ public class WorkerThread implements Runnable{
 	//}	
 	
 	/** @return None */	
-	public synchronized void readPrefFile(){
+	public void readPrefFile(){
 		prefFile.createScanner();
 		while(prefFile.getScanner().hasNextLine()){
 			String line = prefFile.readNextLine();
 			String[] studentProfile = line.split(" ");
-			Student currStudent = new Student(studentProfile[0]);
+			Student currStudent = new Student(studentProfile[0],logger);
 			String[] studentPref = {studentProfile[1],studentProfile[2],studentProfile[3],studentProfile[4],studentProfile[5]};
 			currStudent.setCoursePreference(studentPref);
 			studentList.add(currStudent);
@@ -42,7 +47,7 @@ public class WorkerThread implements Runnable{
 	}
 	
 	/** @return None */
-	public synchronized void readAddDropFile(){
+	public void readAddDropFile(){
 		addDropFile.createScanner();
 		while(addDropFile.getScanner().hasNextLine()){
 			String line = addDropFile.readNextLine();
@@ -76,6 +81,7 @@ public class WorkerThread implements Runnable{
 	
 	/** @return None */
 	public void run(){
+		logger.writeMessage("Thread's run method has been called",3);
 		readPrefFile();
 		studentList = scheduler.createPrefSchedules(studentList);
 		/*for(int i = 0; i< studentList.size();i++){
@@ -91,5 +97,6 @@ public class WorkerThread implements Runnable{
 		result.setStudentList(studentList);
 		result.setAvgScore(scheduler.calculateAveragePreferanceScore(studentList));
 		result.writeSchedulesToFile(outFile);
+		
 	}
 }

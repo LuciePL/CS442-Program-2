@@ -1,0 +1,82 @@
+Student_1 A F G C 23
+Student_2 C D H B 24
+Student_3 A E G D F 29
+Student_4 B F A E 24
+Student_5 G F B A E 30
+Student_6 C F D H 24
+Student_7 E A F B 24
+Student_8 B G H C A 30
+Student_9 D G A G 26
+Student_10 B D E F 24
+Student_11 A B G D 24
+Student_12 A G H D 24
+Student_13 F G A B C 30
+Student_14 B E A G D 30
+Student_15 H C B A 24
+Student_16 F G A C B 30
+Student_17 A B G E C 30
+Student_18 C G H D 24
+Student_19 B C F E G 30
+Student_20 A B G C D 29
+Student_21 G D H B 24
+Student_22 B G E C 24
+Student_23 A G D C 24
+Student_24 D E G C 24
+Student_25 H A B D C 29
+Student_26 E B A H 24
+Student_27 B E H A 24
+Student_28 E D A 18
+Student_29 A C 12
+Student_30 G A D B C 29
+Student_31 F E B D 24
+Student_32 A E B C 24
+Student_33 A G E D H 30
+Student_34 G A B C 24
+Student_35 E B A F D 30
+Student_36 H B E G 24
+Student_37 B H G C 24
+Student_38 E B 12
+Student_39 H F C B 24
+Student_40 H F C A D 30
+Student_41 G A C 18
+Student_42 B A H F E 30
+Student_43 F G 12
+Student_44 G B 12
+Student_45 E F A B 24
+Student_46 H E A F 24
+Student_47 A D B 18
+Student_48 E D C F 24
+Student_49 A B C 18
+Student_50 G E B F 24
+Student_51 D G E A 24
+Student_52 E F D 18
+Student_53 B D F 18
+Student_54 E G A C D 30
+Student_55 C G D A E 30
+Student_56 F E G A B 30
+Student_57 D E B A 24
+Student_58 A E B D 24
+Student_59 A G D E 24
+Student_60 C G E F 24
+Student_61 0
+Student_62 A G B D C 30
+Student_63 A E F G C 30
+Student_64 E G A B 24
+Student_65 A C F G E 30
+Student_66 B G E A 24
+Student_67 A E G D 24
+Student_68 E F G H 24
+Student_69 A G B C 24
+Student_70 H A E B 24
+Student_71 E B C 18
+Student_72 H C F D 24
+Student_73 H B E G 24
+Student_74 B F E 18
+Student_75 0
+Student_76 H D E G 24
+Student_77 F D E 18
+Student_78 G F E 18
+Student_79 F B 12
+Student_80 B D F 18
+
+Average Preference Score is: 23.0

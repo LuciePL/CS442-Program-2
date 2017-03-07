@@ -4,28 +4,26 @@ package registrationScheduler.util;
 public class Logger{
 
 
-    public static enum DebugLevel { CONSTRUCTOR };
+    //public static enum DebugLevel { CONSTRUCTOR, RUN,  };
 
-    private static DebugLevel debugLevel;
-
+  //  private static DebugLevel debugLevel;
+	private static int debugLevel;
 
     public static void setDebugValue (int levelIn) {
-	switch (levelIn) {
-	  case 4: debugLevel = DebugLevel.CONSTRUCTOR; break;
-	}
+		debugLevel = levelIn;
     }
 
-    public static void setDebugValue (DebugLevel levelIn) {
+    /*public static void setDebugValue (DebugLevel levelIn) {
 	debugLevel = levelIn;
-    }
+    }*/
 
-    // @return None
-    public static void writeMessage (String message  , DebugLevel levelIn ) {
-	if (levelIn == debugLevel)
-	    System.out.println(message);
-    }
+    //@return None
+    public static void writeMessage (String message, int levelIn) {
+		if (levelIn == debugLevel)
+			System.out.println(message);
+		}
 
     public String toString() {
-	return "Debug Level is " + debugLevel;
+		return "Debug Level is " + debugLevel;
     }
 }

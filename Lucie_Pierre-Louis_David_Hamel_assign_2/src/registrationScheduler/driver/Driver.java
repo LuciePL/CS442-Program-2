@@ -21,7 +21,7 @@ import registrationScheduler.scheduler.Scheduler;
 public class Driver{
 	public static void main(String args[]) {
 		int numThreads =0;
-		Logger driverLogger;
+		Logger logger = new Logger();
 		//Input validation
 		if(args.length != 5){
 			System.err.println("Incorrect number of input arguments");
@@ -40,8 +40,7 @@ public class Driver{
 				System.exit(1);
 			}
 			else{
-				driverLogger = new Logger();
-				driverLogger.setDebugValue(Integer.parseInt(args[3]));
+				logger.setDebugValue(Integer.parseInt(args[4]));
 			}
 		}
 		catch(NumberFormatException e){
@@ -51,26 +50,15 @@ public class Driver{
 		finally{
 			
 		}
-		FileProcessor preferenceFile = new FileProcessor(args[0]);
-		FileProcessor addDropFile = new FileProcessor(args[1]);
-		FileProcessor outFile = new FileProcessor(args[2]);
-		Results results = new Results();
-		
-		CreateWorkers createWorkers = new CreateWorkers(preferenceFile,addDropFile,outFile, results);
+		FileProcessor preferenceFile = new FileProcessor(args[0],logger);
+		FileProcessor addDropFile = new FileProcessor(args[1],logger);
+		FileProcessor outFile = new FileProcessor(args[2],logger);
+		Results results = new Results(logger);
+		CreateWorkers createWorkers = new CreateWorkers(preferenceFile,addDropFile,outFile, results, logger );
 		createWorkers.startWorkers(numThreads);
+		
 		//results.writeSchedulesToFile(outFile);
-	/*	WorkerThread wT = new WorkerThread(preferenceFile,addDropFile);
-		wT.run();*/
-		
-		//Scheduler scheduler = new Scheduler();
-		//FileProcessor outputFile = new FileProcessor(args[2]);
-		
-		/*studentList = readRegTime(regTimeFile, studentList);
-		studentList = readPrefs(preferenceFile, studentList);
-		Collections.sort(studentList);
-		Scheduler scheduler = new Scheduler();
-		studentList = scheduler.createSchedules(studentList);
-		writeOutput(outputFile,studentList);*/
+	
 		
 	}
 	
