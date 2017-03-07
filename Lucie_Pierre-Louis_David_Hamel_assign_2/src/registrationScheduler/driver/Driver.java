@@ -54,10 +54,10 @@ public class Driver{
 		FileProcessor addDropFile = new FileProcessor(args[1],logger);
 		FileProcessor outFile = new FileProcessor(args[2],logger);
 		Results results = new Results(logger);
-		CreateWorkers createWorkers = new CreateWorkers(preferenceFile,addDropFile,outFile, results, logger );
+		CreateWorkers createWorkers = new CreateWorkers(preferenceFile,addDropFile,outFile, results, logger);
 		createWorkers.startWorkers(numThreads);
-		
-		//results.writeSchedulesToFile(outFile);
+		results.writeSchedulesToFile(outFile);
+		results.writeSchedulesToScreen();
 	
 		
 	}

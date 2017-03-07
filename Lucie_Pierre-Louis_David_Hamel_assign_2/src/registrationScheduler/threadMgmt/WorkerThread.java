@@ -84,19 +84,9 @@ public class WorkerThread implements Runnable{
 		logger.writeMessage("Thread's run method has been called",3);
 		readPrefFile();
 		studentList = scheduler.createPrefSchedules(studentList);
-		/*for(int i = 0; i< studentList.size();i++){
-			ArrayList<Course> studentCourses = studentList.get(i).getScheduledCourses();
-			System.out.println(studentList.get(i).getName());
-			for(int j=0; j < studentCourses.size();j++){
-				System.out.println(studentCourses.get(j));
-			}
-		}*/
 		readAddDropFile();
 		studentList = scheduler.calculatePreferenceScores(studentList);
-		//studentList = scheduler.addDropSchedules(studentList);
 		result.setStudentList(studentList);
 		result.setAvgScore(scheduler.calculateAveragePreferanceScore(studentList));
-		result.writeSchedulesToFile(outFile);
-		
 	}
 }

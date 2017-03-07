@@ -25,7 +25,7 @@ public class FileProcessor{
 	}
 	
 	/** @return None */
-	public void createScanner(){
+	public synchronized void createScanner(){
 		try{
 			inScanner = new Scanner(inFile);
 		}
@@ -36,13 +36,12 @@ public class FileProcessor{
 		finally{}
 	}
 	
-	public Scanner getScanner(){
+	public synchronized Scanner getScanner(){
 		return inScanner;
 	}
 	/**
 	This method exists to read a specific line from the file
 	specified when the FileProcessor object was created. 
-	@param lineNum The line the user wishes to read from the file
 	@return s The line of the file returned as a string
 	*/
 	public synchronized String readNextLine(){

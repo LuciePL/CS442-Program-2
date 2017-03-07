@@ -85,7 +85,6 @@ public class Scheduler{
 			for(int j = 0; j < courseWants.length; j++){
 				for(int k = 0;k < studentList.get(i).getScheduledCourses().size() ; k++){
 					if(courseWants[j].equals(studentList.get(i).getScheduledCourses().get(k).getName())){
-						//System.out.println(6-j + "\n");
 						studentList.get(i).setPreferenceScore(6-j);
 						correctClasses++;
 					}
