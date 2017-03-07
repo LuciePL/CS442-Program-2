@@ -20,6 +20,23 @@ public class Results implements FileDisplayInterface{
 	/** @return None */
 	public synchronized void setStudentList(ArrayList<Student>studentsIn){
 		this.studentList = studentsIn;
+		//for(int i = 0; i < studentList.size();i++){
+		//	logger.writeMessage("Entry added to the Results data structure",2);
+		//}
+	}
+
+	/** @return None */
+	public void addStudent(Student studentIn){
+		boolean inList = false;
+		for(int i = 0; i < studentList.size(); i++){
+			if(studentList.get(i).getName().equals(studentIn.getName())){
+				inList = true;
+			}
+		}
+		if(!inList){
+			studentList.add(studentIn);
+			logger.writeMessage("Logger : "+studentIn.getName() +" added to the Results data structure",2);
+		}	
 	}
 
 	/** @return None */
@@ -38,7 +55,7 @@ public class Results implements FileDisplayInterface{
 		}
 		String prefScoreString = studentList.get(i).getPreferenceScore() + "\n";
 		outString = outString+ prefScoreString;
-		logger.writeMessage(outString,2);
+		//logger.writeMessage(outString,2);
 		fpIn.write(outString);
 	}
 	fpIn.write("\n");
@@ -53,7 +70,7 @@ public class Results implements FileDisplayInterface{
 			outString = outString + studentList.get(i).getScheduledCourses().get(j).getName() + " ";
 		}
 		outString = outString+ studentList.get(i).getPreferenceScore();
-		logger.writeMessage(outString,2);
+		//logger.writeMessage(outString,2);
 		System.out.println(outString);
 	}
 	System.out.println("Average Preference Score is: " + avgScore);
