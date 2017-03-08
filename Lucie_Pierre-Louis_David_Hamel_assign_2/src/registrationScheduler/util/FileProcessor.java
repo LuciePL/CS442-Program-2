@@ -30,6 +30,7 @@ public class FileProcessor{
 			inScanner = new Scanner(inFile);
 		}
 		catch(FileNotFoundException e2){
+			e2.printStackTrace();
 			System.err.println("File given does not exist");
 			System.exit(1);
 		}

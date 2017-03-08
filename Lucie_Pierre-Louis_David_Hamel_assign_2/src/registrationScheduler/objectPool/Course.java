@@ -8,14 +8,14 @@ public class Course{
 	private String courseName;
 	private int studentCount;
 	private Logger logger;
-	//private int maxStudents;
+	private int maxStudents;
 	
 	public Course(String courseName, Logger loggerIn){
 		this.courseName = courseName;
 		this.studentCount = 0;
 		this.logger = loggerIn;
 		loggerIn.writeMessage("Course constructor called",4);
-		//this.maxStudents = 60;
+		this.maxStudents = 60;
 	}
 	
 	/**@return the course name*/

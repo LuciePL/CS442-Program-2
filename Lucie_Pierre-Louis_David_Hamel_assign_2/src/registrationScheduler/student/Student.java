@@ -56,6 +56,7 @@ public class Student{
 		numberOfCourses++;
 	}
 	
+	/**@return none*/
 	public void dropScheduledCourse(Course course){
 		for(int i =0; i < scheduledCourses.size(); i++){
 			if(scheduledCourses.get(i).getName().equals(course.getName())){
@@ -65,10 +66,10 @@ public class Student{
 		numberOfCourses--;
 	}
 	
+	/**@return none*/
 	public void setPreferenceScore(int score){
 		preferenceScore+=score;
 	}
-	
 	
 	/**@return the student's name*/
 	@Override

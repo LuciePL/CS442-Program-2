@@ -4,6 +4,7 @@ import registrationScheduler.util.Logger;
 import registrationScheduler.store.Results;
 import registrationScheduler.scheduler.Scheduler;
 
+
 public class CreateWorkers{
 	FileProcessor prefFile;
 	FileProcessor addDropFile;
@@ -24,9 +25,14 @@ public class CreateWorkers{
 	public void startWorkers(int numThreads){
 		for(int i = 0; i< numThreads; i++){
 			WorkerThread temp = new WorkerThread(prefFile,addDropFile,outFile,result,logger);
-			//logger.writeMessage("Constructor called",4);
-			temp.run();
-			System.out.println("Worker #"+i);
+			Thread threadTemp = new Thread(temp);
+			threadTemp.start();
+			try{
+			threadTemp.join();
+			}catch(InterruptedException e){
+				System.err.println("Interrupted Exception");
+				System.exit(1);
+			}
 		}
 	}
 }

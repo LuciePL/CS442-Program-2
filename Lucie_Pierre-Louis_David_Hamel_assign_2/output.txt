@@ -79,4 +79,4 @@ Student_78 G F E 18
 Student_79 F B 12
 Student_80 B D F 18
 
-Average Preference Score is: 23.0
+Average preference score is: 23.0

@@ -2,26 +2,22 @@ package registrationScheduler.scheduler;
 
 import registrationScheduler.student.Student;
 import registrationScheduler.objectPool.Course;
-import registrationScheduler.objectPool.CoursePool;
 import java.util.ArrayList;
 import registrationScheduler.util.Logger;
 
 public class Scheduler{
 	private Course courseList[] = new Course[8];
-	private CoursePool pool;
 	Logger logger;
 	
 	public Scheduler(Logger loggerIn){
-		this.logger = logger;
+		this.logger = loggerIn;
 		logger.writeMessage("Scheduler constructor called",4);
 		String courseNames[] = new String[] {"A","B","C","D","E","F","G","H"};
 		for(int i=0; i< courseNames.length;i++){
 			Course temp = new Course(courseNames[i],logger);
 			courseList[i] = temp;
 		}
-		
-		//pool = new CoursePool(courseNames);
-		}
+	}
 	
 	/**@return A list of all the students after they have been 
 	assigned courses based on their preferences*/
@@ -56,7 +52,6 @@ public class Scheduler{
 			}
 		}
 		return student;
-		
 	}
 	
 	/**@return A student after they have had a(n) specified course(s)
@@ -88,7 +83,6 @@ public class Scheduler{
 						studentList.get(i).setPreferenceScore(6-j);
 						correctClasses++;
 					}
-					
 				}
 				unwantedClasses = studentList.get(i).getScheduledCourses().size() - correctClasses;
 				studentList.get(i).setPreferenceScore(unwantedClasses);
@@ -103,7 +97,6 @@ public class Scheduler{
 		for(int i = 0; i < studentList.size(); i++){
 			totalPref = totalPref + studentList.get(i).getPreferenceScore();
 		}
-
 		return totalPref/80;
 	}
 	

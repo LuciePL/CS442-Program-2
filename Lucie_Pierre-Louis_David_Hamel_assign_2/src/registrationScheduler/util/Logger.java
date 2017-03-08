@@ -13,9 +13,9 @@ public class Logger{
 		debugLevel = levelIn;
     }
 
-    /*public static void setDebugValue (DebugLevel levelIn) {
-	debugLevel = levelIn;
-    }*/
+    public static int getDebugValue () {
+		return debugLevel;
+    }
 
     //@return None
     public static void writeMessage (String message, int levelIn) {

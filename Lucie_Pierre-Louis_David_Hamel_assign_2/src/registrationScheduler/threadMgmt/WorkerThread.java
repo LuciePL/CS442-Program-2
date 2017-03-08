@@ -23,18 +23,14 @@ public class WorkerThread implements Runnable{
 		this.outFile = outFile;
 		this.result = resultsIn;
 		this.logger = loggerIn;
-		loggerIn.writeMessage("Worker Thread constructor called",4);
+		logger.writeMessage("Worker Thread constructor called",4);
 		this.scheduler = new Scheduler(logger);
 		this.studentList = new ArrayList<Student>();
 		
 	}
-
-	//public synchronized void studentsToResults(){
-	//	results
-	//}	
 	
 	/** @return None */	
-	public void readPrefFile(){
+	public synchronized void readPrefFile(){
 		prefFile.createScanner();
 		while(prefFile.getScanner().hasNextLine()){
 			String line = prefFile.readNextLine();
@@ -47,7 +43,7 @@ public class WorkerThread implements Runnable{
 	}
 	
 	/** @return None */
-	public void readAddDropFile(){
+	public synchronized void readAddDropFile(){
 		addDropFile.createScanner();
 		while(addDropFile.getScanner().hasNextLine()){
 			String line = addDropFile.readNextLine();
@@ -60,29 +56,31 @@ public class WorkerThread implements Runnable{
 						addDropCourses.add(addDropProfile[j]);
 					}
 					try{
-						if(Integer.parseInt(addDropProfile[1]) ==0){
+						if(Integer.parseInt(addDropProfile[1])==0){
 							studentList.set(i,scheduler.dropCourses(studentList.get(i),addDropCourses));
 						}
 						else{
 							studentList.set(i,scheduler.addCourses(studentList.get(i),addDropCourses));
 						}
 					}catch(NumberFormatException e){
+						e.printStackTrace();
+						System.err.println("Add-drop input file was incorrect");
 						System.exit(1);
-					}
-					finally{
+					}finally{
 						
 					}
-					}
-					
 				}
+					
 			}
 		}
+	}
 
 	
 	/** @return None */
 	public void run(){
 		logger.writeMessage("Thread's run method has been called",3);
 		readPrefFile();
+		
 		studentList = scheduler.createPrefSchedules(studentList);
 		readAddDropFile();
 		studentList = scheduler.calculatePreferenceScores(studentList);

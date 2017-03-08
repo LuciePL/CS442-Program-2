@@ -44,6 +44,7 @@ public class Driver{
 			}
 		}
 		catch(NumberFormatException e){
+			e.printStackTrace();
 			System.err.println("parse Int failed");
 			System.exit(1);
 		}
@@ -57,9 +58,9 @@ public class Driver{
 		CreateWorkers createWorkers = new CreateWorkers(preferenceFile,addDropFile,outFile, results, logger);
 		createWorkers.startWorkers(numThreads);
 		results.writeSchedulesToFile(outFile);
-		results.writeSchedulesToScreen();
-	
-		
+		if(logger.getDebugValue() >0){
+			results.writeSchedulesToScreen();
+		}
 	}
 	
 }
